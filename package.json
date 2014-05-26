@@ -27,15 +27,16 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "npm run lint && NODE_ENV=testing mocha -R spec tests",
-    "quickBuild": "npm run lint && browserify ./lib/views/client.js -d -o ./public/bundle.js",
-    "build": "npm run quickBuild && esmangle ./public/bundle.js -o ./public/bundle.js",
-    "lint": "jshint --verbose --show-non-errors .",
-    "fix": "fixmyjs .",
+    "test": "npm run lint && NODE_ENV=testing ./node_modules/mocha/bin/mocha -R spec tests",
+    "quickBuild": "npm run lint && ./node_modules/browserify/bin/cmd.js ./lib/views/client.js -d -o ./public/bundle.js",
+    "build": "npm run quickBuild && ./node_modules/esmangle/bin/esmangle.js ./public/bundle.js -o ./public/bundle.js",
+    "lint": "./node_modules/jshint/bin/jshint --verbose --show-non-errors .",
+    "fix": "./node_modules/fixmyjs/bin/fixmyjs .",
     "postinstall": "npm run quickBuild"
   },
   "devDependencies": {
     "browserify": "~2.29.0",
+    "esmangle": "0.0.15",
     "term.js": "CodeNow/term.js",
     "es5-shimify": "~2.0.5",
     "mocha": "~1.12.1",
